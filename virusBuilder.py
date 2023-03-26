@@ -124,7 +124,7 @@ if browserOption == 'y':
     for i in range(webpageAmount):
         print()
         website = "https://www."
-        websiteInput = input("Webpage " + str(i) + ": ")
+        websiteInput = input("Webpage " + str(i + 1) + ": ")
         website += websiteInput
         web_list.append(website)
 
