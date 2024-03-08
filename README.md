@@ -7,8 +7,7 @@
 	<ol>
 		<li>Run the <code>virusBuilder.py</code> script to start the program.</li>
 		<li>Enter the name of the virus file you want to create (without the file extension).</li>
-		<li>Choose whether you want to include a custom alert box in the virus file or not.</li>
-		<li>If you choose to include a custom alert box, enter the message you want to display in the box.</li>
+		<li>Select customizations through the console.</li>
 		<li>The program will create a new file in your Downloads folder with the name you specified, and add the virus code to it.</li>
 	</ol>
 	<h2>How it works</h2>
