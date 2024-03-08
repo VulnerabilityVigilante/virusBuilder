@@ -2,7 +2,7 @@
 <html>
 <body>
 	<h1>Virus Builder 1.0.3</h1>
-	<p>Virus Builder is a Python program that lets you create a custom virus file with a custom alert box, as well as the optional functionality of browser spamming. This program is created by VulnerabilityVigilante.</p>
+	<p>Virus Builder is a Python program that lets you create a custom virus file with a custom alert box, browser spammer, and file destroyer. This program is created by VulnerabilityVigilante.</p>
 	<h2>Usage</h2>
 	<ol>
 		<li>Run the <code>virusBuilder.py</code> script to start the program.</li>
